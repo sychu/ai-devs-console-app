@@ -26,11 +26,6 @@ namespace AIDevs
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<MainService>();
-                    services.AddHttpClient(MetaData.HttpClientName.OpenAI, client =>
-                    {
-                        client.BaseAddress = new Uri("https://api.openai.com");
-                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", hostContext.Configuration[MetaData.ConfigKeys.OpenAIApiKey]);
-                    });
                     services.AddTransient<Main>();
                     services.AddTransient<OpenAIClientFactory>();
                 })
